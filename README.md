@@ -31,13 +31,11 @@ cd CatChat-openAI-demo
 npm install
 ```
 
-### 3. Add your OpenAI API key
+### 3. Add your own OpenAI API key
 
-Create a `.env` file in the root directory:
+From the frontend, input your own OpenAI key, which will be stored at local storage in the browser.
 
-```
-VITE_OPENAI_API_KEY=your_openai_api_key_here
-```
+The Personal API key will never be sent to and server for this demo.
 
 > 🔒 Never commit your API key to GitHub!
 
@@ -64,8 +62,9 @@ Open `http://localhost:5173` to view the chatbot.
 
 ```
 src/
-├── components/        // UI components (ChatBubble, InputBox, etc.)
-├── pages/             // Main Chat view
+├── components/        // UI components 
+    ├── ui/            // ChatBubble, etc.
+    ├── pages/         // pages
 ├── lib/               // API call logic
 └── App.tsx            // Root component
 ```
