@@ -65,6 +65,7 @@ src/
 ├── components/        // UI components 
     ├── ui/            // ChatBubble, etc.
     ├── pages/         // pages
+    ├── contexts/      // Apikey stored context
 ├── lib/               // API call logic
 └── App.tsx            // Root component
 ```
@@ -73,7 +74,7 @@ src/
 
 ## Backend
 
-`https://github.com/ThundeRayn/Catchat-openAI-demo-backend`
+> This demo has no backend
 
 ---
 
