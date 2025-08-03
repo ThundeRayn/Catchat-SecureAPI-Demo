@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { Button } from "../../components/ui/button"
 import ChatBubble from "../../components/ui/chatbubble"
-//import { useApiKey } from '../../contexts/ApiKeyContext';
+import { useApiKey } from '../../contexts/ApiKeyContext';
+import { fetchChatCompletion } from '../../utils/openaiClient';
 
 const FUNCTION_URL = 'https://ok35xbmgxbwcyn6metu6ygxbnq0mktyi.lambda-url.ca-central-1.on.aws';
 
@@ -13,7 +14,7 @@ type Message = {
 const Chatbot = () => {
 
   // Ensure the API key is set before proceeding
-  // const { apiKey, clearApiKey } = useApiKey();
+  const { apiKey, clearApiKey } = useApiKey();
 
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const sendRef = useRef<HTMLButtonElement>(null);
@@ -81,9 +82,15 @@ const Chatbot = () => {
       className="flex flex-col w-full h-full min-w-100 bg-white rounded-lg shadow-lg sm:w-1/3 sm:h-5/6"
     >
       
-      <div id="chat-title" className="flex-[1] flex justify-center items-center bg-orange-400 rounded-t-lg shadow-lg">
+      <div id="chat-title" className="flex-[1] flex flex-col justify-center items-center bg-orange-400 rounded-t-lg shadow-lg">
         <img src="/cat-with-wry-smile-svgrepo-com.svg" alt="logo" width={30} height={30} />
-        {/* <p>Your API Key: {apiKey?.slice(0, 5)}... (hidden)</p> */}
+      </div>
+            
+      <div className="flex-[.5] flex items-center justify-center bg-gray-400 border-t border-orange-300 rounded-lg mt-3 mx-3">
+        <p className="text-white text-xs font-normal">Your API Key: {apiKey?.slice(0, 5)}...
+          <button className="text-xs border-solid border-1 px-2 rounded cursor-pointer font-normal ml-2" onClick={clearApiKey} title="Clear API Key"
+          >clear</button>
+        </p>
       </div>
 
       <div id="chat-field" className="flex-[5] p-6 space-y-3 overflow-auto">

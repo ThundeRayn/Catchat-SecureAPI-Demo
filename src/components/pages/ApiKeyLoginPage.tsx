@@ -16,9 +16,12 @@ export const ApiKeyLoginPage = () => {
     setIsAnimating(true);
 
     if (inputKey.startsWith('sk-')) {
-      setApiKey(inputKey);
       setIsDisabled(true);
       setButtonText('Saving...');
+      setTimeout(() => {
+        setButtonText('Saving...');
+        setApiKey(inputKey);  
+      }, 700);
     } else {
       setIsDisabled(true);
       setButtonText('❌ Invalid API Key');
